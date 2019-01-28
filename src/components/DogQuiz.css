@@ -1,0 +1,12 @@
+* {
+  background-color: lightblue;
+}
+
+.dog-quiz {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+}
