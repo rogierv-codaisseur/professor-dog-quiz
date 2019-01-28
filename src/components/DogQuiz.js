@@ -4,13 +4,13 @@ import AnswerContainer from './AnswersContainer';
 import StatsContainer from './StatsContainer';
 
 export default class DogQuiz extends Component {
-  render() {
-    return (
-      <div>
-        <QuestionContainer />
-        <AnswerContainer />
-        <StatsContainer />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<QuestionContainer />
+				<AnswerContainer />
+				<StatsContainer />
+			</div>
+		);
+	}
 }
