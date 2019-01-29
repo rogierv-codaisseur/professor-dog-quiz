@@ -15,7 +15,7 @@ export default function(props) {
 
       <img className='dog-question-image' src={props.image.imageUrl} alt='DogBreed' />
       <div className='answers'>
-        <AnswerContainer name={props.image.name}/>
+        <AnswerContainer name={props.image.goodDog} badDog1={props.image.badDog1} badDog2={props.image.badDog2} />
         <StatsContainer />
       </div>
     </div>
