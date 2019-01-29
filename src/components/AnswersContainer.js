@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import Answer from "./Answer";
+import React from 'react';
 
 import './Answer.css';
 
@@ -7,7 +6,7 @@ export default function AnswerContainer(props) {
   const mixedArray = mixArray([props.name, props.badDog1, props.badDog2]);
 
   return (
-    <div className="answer-container">
+    <div className='answer-container'>
       <button className='answer'>{mixedArray[0]}</button>
       <button className='answer'>{mixedArray[1]}</button>
       <button className='answer'>{mixedArray[2]}</button>
@@ -21,9 +20,7 @@ function mixArray(array) {
   } else {
     const index = Math.floor(Math.random() * array.length);
     const newArray = [...array];
-    console.log("new array", newArray);
     newArray.splice(index, 1);
-    console.log("spliced array", newArray);
     return [array[index], ...mixArray(newArray)];
   }
 }
