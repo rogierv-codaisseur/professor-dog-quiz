@@ -25,11 +25,11 @@ class StatsContainer extends Component {
   render() {
     return (
       <div className='stats-container'>
-        <div onClick={this.onClickHandlerCorrect}>[CORRECT]</div>
-        <div onClick={this.onClickHandlerWrong}>[WRONG]</div>
         <StatsStreak currentStreak={this.props.currentStreak} />
         <StatsStreakHighest highestStreak={this.props.highestStreak} />
         <StatsPercentage successRate={this.props.successRate} />
+        <div onClick={this.onClickHandlerCorrect}>[CORRECT]</div>
+        <div onClick={this.onClickHandlerWrong}>[WRONG]</div>
       </div>
     );
   }

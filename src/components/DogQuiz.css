@@ -2,11 +2,54 @@
   background-color: lightblue;
 }
 
-.dog-quiz {
+*/ .dog-quiz {
   display: table;
   position: absolute;
   height: 100%;
   width: 100%;
   margin: auto;
   padding: 2rem;
+}
+
+.dog-quiz-title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  font-family: 'Amatic SC', cursive;
+  font-size: 2rem;
+}
+
+.dog-quiz-logo {
+  margin: 1rem;
+  height: 3rem;
+}
+
+.dog-question-image {
+  height: 20rem;
+  width: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.answers {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .dog-quiz-title {
+    font-size: 1rem;
+  }
+
+  .dog-question-image {
+    height: 10rem;
+    width: auto;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

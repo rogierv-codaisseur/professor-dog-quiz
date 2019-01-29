@@ -1,0 +1,20 @@
+.answer {
+  background: white;
+  border-radius: 15px 50px 30px;
+  margin: 1rem;
+  height: 3rem;
+  width: 20rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 600px) {
+  .answer {
+    height: 2rem;
+    width: 15rem;
+    font-size: 1rem;
+  }
+}

@@ -1,6 +1,7 @@
 .stats-container {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: space-evenly;
+  text-align: left;
   padding: 2rem;
 }
