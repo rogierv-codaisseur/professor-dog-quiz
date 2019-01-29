@@ -10,7 +10,7 @@ import './StatsContainer.css';
 class StatsContainer extends Component {
   onClickHandlerCorrect = () => {
     this.props.addStreak();
-    console.log('CURRENT STREAK:', this.props.currentStreak);
+    // console.log('CURRENT STREAK:', this.props.currentStreak);
   };
 
   onClickHandlerWrong = () => {
@@ -18,10 +18,11 @@ class StatsContainer extends Component {
       this.props.addHighestStreak(this.props.currentStreak);
     }
     this.props.resetStreak();
-    console.log('HIGHEST STREAK:', this.props.highestStreak);
   };
 
   render() {
+    console.log('CURRENT STREAK:', this.props.currentStreak);
+    console.log('HIGHEST STREAK:', this.props.highestStreak);
     return (
       <div className='stats-container'>
         <div onClick={this.onClickHandlerCorrect}>[CORRECT]</div>
