@@ -5,8 +5,7 @@ const reducer = (state = initialState, action = {}) => {
     case 'ADD_STREAK':
       return (state += 1);
     case 'RESET_STREAK':
-      state = 0;
-      return state;
+      return 0;
     default:
       return state;
   }

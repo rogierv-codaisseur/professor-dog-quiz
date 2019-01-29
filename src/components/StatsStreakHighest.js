@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class StatsStreakHighest extends Component {
-  render() {
-    return <div>Highest Streak: 0</div>;
-  }
-}
+const StatsStreakHighest = props => {
+  return <div>Highest Streak: {props.highestStreak}</div>;
+};
+
+export default StatsStreakHighest;
