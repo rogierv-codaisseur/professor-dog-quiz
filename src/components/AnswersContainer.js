@@ -5,9 +5,7 @@ export default class AnswerContainer extends Component {
   render() {
     return (
       <div className='answer-container'>
-        <Answer />
-        <Answer />
-        <Answer />
+        <p>{this.props.name}</p>
       </div>
     );
   }
