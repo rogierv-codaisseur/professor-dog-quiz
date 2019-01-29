@@ -8,13 +8,16 @@ import logo from './../images/dog-api-logo.svg';
 export default function(props) {
   return (
     <div className='dog-quiz'>
-      <img src={logo} alt='logo' />
-      <h1>Professor Dog Quiz</h1>
-      <h1>Dogs list</h1>
-      <p>{props.dogs}</p>
-      <QuestionContainer />
-      <AnswerContainer />
-      <StatsContainer />
+      <div className='dog-quiz-title'>
+        <img className='dog-quiz-logo' src={logo} alt='logo' />
+        <h1>Professor Dog Quiz</h1>
+      </div>
+
+      <img className='dog-question-image' src={props.image.imageUrl} alt='DogBreed' />
+      <div className='answers'>
+        <AnswerContainer name={props.image.name}/>
+        <StatsContainer />
+      </div>
     </div>
   );
 }

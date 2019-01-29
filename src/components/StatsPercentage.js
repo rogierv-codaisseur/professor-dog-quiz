@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class StatsPercentage extends Component {
-  render() {
-    return <div>Success rate: 0%</div>;
-  }
-}
+const StatsPercentage = props => {
+  const total = props.successRate.CORRECT + props.successRate.WRONG;
+  const percentage = Math.round((props.successRate.CORRECT / total) * 100, 0);
+
+  return <div>Success rate: {percentage || 0}%</div>;
+};
+
+export default StatsPercentage;

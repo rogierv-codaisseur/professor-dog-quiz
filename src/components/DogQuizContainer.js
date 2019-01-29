@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import DogQuiz from './DogQuiz.js';
-import * as request from 'superagent';
-import { getDogs } from '../actions/dogs';
+import { getDogs, getBreedPhoto } from '../actions/dogs';
+import { connect } from 'react-redux';
 
 class DogQuizContainer extends Component {
 	state = {};
@@ -12,16 +11,18 @@ class DogQuizContainer extends Component {
 	};
 
 	render() {
-		if (!this.props.dogs) return 'Loading photos...';
-		return <DogQuiz dogs={this.props.dogs} />;
+		if (!this.props.image) return 'Loading photos...';
+		//return <DogQuiz dogs={this.props.dogs} />;
+		return <DogQuiz image={this.props.image} />;
 	}
 }
 
 const mapStateToProps = state => ({
 	dogs: state.dogs,
+	image: state.images,
 });
 
 export default connect(
 	mapStateToProps,
-	{ getDogs }
+	{ getDogs, getBreedPhoto }
 )(DogQuizContainer);
