@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class StatsStreak extends Component {
-  render() {
-    return <div>Current Streak: 0</div>;
-  }
-}
+const StatsStreak = props => {
+  return <div>Current Streak: {props.currentStreak}</div>;
+};
+
+export default StatsStreak;
