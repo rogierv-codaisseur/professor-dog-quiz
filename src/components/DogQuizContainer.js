@@ -8,6 +8,7 @@ class DogQuizContainer extends Component {
 
   componentDidMount = () => {
     this.props.getDogs();
+
     this.props.getBreedPhoto()
   };
 
@@ -18,6 +19,7 @@ class DogQuizContainer extends Component {
 }
 
 const mapStateToProps = state => ({
+
   dogs: state.dogs,
   image: state.images
 });
