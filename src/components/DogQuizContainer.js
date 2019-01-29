@@ -1,30 +1,28 @@
-import React, { Component } from "react";
-import DogQuiz from "./DogQuiz.js";
-import { getDogs, getBreedPhoto } from "../actions/dogs";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import DogQuiz from './DogQuiz.js';
+import { getDogs, getBreedPhoto } from '../actions/dogs';
+import { connect } from 'react-redux';
 
 class DogQuizContainer extends Component {
-  state = {};
+	state = {};
 
-  componentDidMount = () => {
-    this.props.getDogs();
+	componentDidMount = () => {
+		this.props.getDogs();
+	};
 
-    this.props.getBreedPhoto()
-  };
-
-  render() {
-    if (!this.props.dogs) return "Loading photos...";
-    return <DogQuiz dogs={this.props.dogs} />;
-  }
+	render() {
+		if (!this.props.image) return 'Loading photos...';
+		//return <DogQuiz dogs={this.props.dogs} />;
+		return <DogQuiz image={this.props.image} />;
+	}
 }
 
 const mapStateToProps = state => ({
-
-  dogs: state.dogs,
-  image: state.images
+	dogs: state.dogs,
+	image: state.images,
 });
 
 export default connect(
-  mapStateToProps,
-  { getDogs, getBreedPhoto }
+	mapStateToProps,
+	{ getDogs, getBreedPhoto }
 )(DogQuizContainer);
