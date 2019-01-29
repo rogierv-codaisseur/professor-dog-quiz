@@ -13,9 +13,9 @@ export default function(props) {
         <h1>Professor Dog Quiz</h1>
       </div>
 
-      <img className='dog-question-image' src={props.image} alt='DogBreed' />
+      <img className='dog-question-image' src={props.image.imageUrl} alt='DogBreed' />
       <div className='answers'>
-        <AnswerContainer />
+        <AnswerContainer name={props.image.name}/>
         <StatsContainer />
       </div>
     </div>
