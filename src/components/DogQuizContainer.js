@@ -3,7 +3,8 @@ import DogQuiz from "./DogQuiz.js";
 import {
   getDogs,
   getRandomDogsAndPhoto,
-  sendAvailableDogs
+  sendAvailableDogs,
+  increaseLevel
 } from "../actions/dogs";
 import { connect } from "react-redux";
 
@@ -28,9 +29,16 @@ class DogQuizContainer extends Component {
         this.props.availableDogs.unused,
         3
       );
-	}
-    if (this.props.image === prevProps.image && (this.props.turn === 0 || this.props.turn !== prevProps.turn)) {
-      this.props.getRandomDogsAndPhoto({... this.props.availableDogs.available});
+      this.props.increaseLevel();
+      console.log("git is being annoying");
+    }
+    if (
+      this.props.image === prevProps.image &&
+      (this.props.turn === 0 || this.props.turn !== prevProps.turn)
+    ) {
+      this.props.getRandomDogsAndPhoto({
+        ...this.props.availableDogs.available
+      });
     }
   };
 
@@ -63,10 +71,11 @@ const mapStateToProps = state => ({
   image: state.images,
   turn: state.successRate.CORRECT + state.successRate.WRONG,
   currentStreak: state.currentStreak,
-  availableDogs: state.availableDogs
+  availableDogs: state.availableDogs,
+  level: state.level
 });
 
 export default connect(
   mapStateToProps,
-  { getDogs, getRandomDogsAndPhoto, sendAvailableDogs }
+  { getDogs, getRandomDogsAndPhoto, sendAvailableDogs, increaseLevel }
 )(DogQuizContainer);
