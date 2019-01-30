@@ -7,28 +7,20 @@ export default function AnswerContainer(props) {
   const mixedArray = mixArray([props.name, props.badDog1, props.badDog2]);
 
   return (
-    //   <div className='answer-container'>
-    //   <button className='answer'>{mixedArray[0]}</button>
-    //   <button className='answer'>{mixedArray[1]}</button>
-    //   <button className='answer'>{mixedArray[2]}</button>
-    // </div>
-
     <div className='answer-container'>
-      <Answer
-        className='answer'
-        correctAnswer={props.name}
-        answer={mixedArray[0]}
-      />
-      <Answer
-        className='answer'
-        correctAnswer={props.name}
-        answer={mixedArray[1]}
-      />
-      <Answer
-        className='answer'
-        correctAnswer={props.name}
-        answer={mixedArray[2]}
-      />
+      {[0, 1, 2].map(choice => (
+        <Answer
+          key={choice}
+          className='answer'
+          correctAnswer={props.name}
+          answer={mixedArray[choice]}
+          classNameSolution={
+            props.name === mixedArray[choice]
+              ? 'answer-correct'
+              : 'answer-wrong'
+          }
+        />
+      ))}
     </div>
   );
 }

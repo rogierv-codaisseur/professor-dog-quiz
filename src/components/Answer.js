@@ -7,27 +7,23 @@ import { addCorrect, addWrong } from '../actions/successRate';
 
 class Answer extends Component {
   state = {
-    className: 'answer'
+    className: this.props.className
   };
 
   onClickCheckAnswer = () => {
-    if (this.props.answer === this.props.correctAnswer) {
-      this.setState({ className: 'answer-correct' });
-    } else {
-      this.setState({ className: 'answer-wrong' });
-    }
+    this.setState({ className: this.props.classNameSolution });
     setTimeout(() => {
       if (this.props.answer === this.props.correctAnswer) {
         this.props.addStreak();
         this.props.addCorrect();
-        this.setState({ className: 'answer' });
+        this.setState({ className: this.props.className });
       } else {
         if (this.props.currentStreak >= this.props.highestStreak) {
           this.props.addHighestStreak(this.props.currentStreak);
         }
         this.props.addWrong();
         this.props.resetStreak();
-        this.setState({ className: 'answer' });
+        this.setState({ className: this.props.className });
       }
     }, 1000);
   };
