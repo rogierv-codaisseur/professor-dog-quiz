@@ -30,6 +30,7 @@ class DogQuizContainer extends Component {
         3
       );
       this.props.increaseLevel();
+      console.log("git is being annoying");
     }
     if (
       this.props.image === prevProps.image &&
