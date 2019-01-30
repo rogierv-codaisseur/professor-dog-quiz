@@ -1,5 +1,4 @@
 import React from 'react';
-import Answer from './Answer';
 
 import './Answer.css';
 
@@ -8,19 +7,9 @@ export default function AnswerContainer(props) {
 
   return (
     <div className='answer-container'>
-      {[0, 1, 2].map(choice => (
-        <Answer
-          key={choice}
-          className='answer'
-          correctAnswer={props.name}
-          answer={mixedArray[choice]}
-          classNameAnswer={
-            props.name === mixedArray[choice]
-              ? 'answer-correct'
-              : 'answer-wrong'
-          }
-        />
-      ))}
+      <button className='answer'>{mixedArray[0]}</button>
+      <button className='answer'>{mixedArray[1]}</button>
+      <button className='answer'>{mixedArray[2]}</button>
     </div>
   );
 }
