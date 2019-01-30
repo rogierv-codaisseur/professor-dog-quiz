@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StatsPercentage from './StatsPercentage';
 import StatsStreak from './StatsStreak';
 import StatsStreakHighest from './StatsStreakHighest';
+import StatsTurn from './StatsTurn';
 import { addStreak, resetStreak } from '../actions/currentStreak';
 import { addHighestStreak } from '../actions/highestStreak';
 import { addCorrect, addWrong } from '../actions/successRate';
@@ -25,6 +26,7 @@ class StatsContainer extends Component {
   render() {
     return (
       <div className='stats-container'>
+        <StatsTurn successRate={this.props.successRate} />
         <StatsStreak currentStreak={this.props.currentStreak} />
         <StatsStreakHighest highestStreak={this.props.highestStreak} />
         <StatsPercentage successRate={this.props.successRate} />
