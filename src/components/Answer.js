@@ -6,24 +6,39 @@ import { addHighestStreak } from '../actions/highestStreak';
 import { addCorrect, addWrong } from '../actions/successRate';
 
 class Answer extends Component {
-  onClickCheckAnswer = correct => {
+  state = {
+    className: 'answer'
+  };
+
+  onClickCheckAnswer = () => {
     if (this.props.answer === this.props.correctAnswer) {
-      this.props.addStreak();
-      this.props.addCorrect();
+      this.setState({ className: 'answer-correct' });
     } else {
-      if (this.props.currentStreak >= this.props.highestStreak) {
-        this.props.addHighestStreak(this.props.currentStreak);
-      }
-      this.props.addWrong();
-      this.props.resetStreak();
+      this.setState({ className: 'answer-wrong' });
     }
+    setTimeout(() => {
+      if (this.props.answer === this.props.correctAnswer) {
+        this.props.addStreak();
+        this.props.addCorrect();
+        this.setState({ className: 'answer' });
+      } else {
+        if (this.props.currentStreak >= this.props.highestStreak) {
+          this.props.addHighestStreak(this.props.currentStreak);
+        }
+        this.props.addWrong();
+        this.props.resetStreak();
+        this.setState({ className: 'answer' });
+      }
+    }, 1000);
   };
 
   render() {
     return (
-      <div className='answer' onClick={this.onClickCheckAnswer}>
+      <button
+        className={this.state.className}
+        onClick={this.onClickCheckAnswer}>
         {this.props.answer}
-      </div>
+      </button>
     );
   }
 }
