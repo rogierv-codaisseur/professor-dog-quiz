@@ -15,8 +15,9 @@ class DogQuizContainer extends Component {
 
   
   componentDidUpdate = (prevProps) => {
+
 	if (this.props.image === prevProps.image) {
-		this.props.getRandomDogsAndPhoto(this.props.dogs[0].dogs);
+		this.props.getRandomDogsAndPhoto(this.props.dogs);
 	}    
   }; 
 

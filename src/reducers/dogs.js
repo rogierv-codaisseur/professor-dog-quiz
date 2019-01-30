@@ -1,7 +1,7 @@
 const reducer = (state = [], action = {}) => {
 	switch (action.type) {
 		case 'SHOW_DOGS':
-			return [...state, action.payload];
+			return action.payload.dogs;
 		default:
 			return state;
 	}
