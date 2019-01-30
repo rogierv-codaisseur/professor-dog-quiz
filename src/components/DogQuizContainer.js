@@ -43,6 +43,7 @@ class DogQuizContainer extends Component {
         this.props.currentStreak === prevProps.currentStreak &&
         (this.props.turn === 0 || this.props.turn !== prevProps.turn))
     ) {
+      console.log("git being annoying again");
       this.props.getRandomDogsAndPhoto({
         ...this.props.availableDogs.available
       });
