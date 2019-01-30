@@ -34,10 +34,13 @@ function pickRandomDogs(dogs) {
 
 export function getRandomDogsAndPhoto(availableDogs) {
   const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
-  console.log("three random dogs", threeRandomIndices);
   return function(dispatch) {
     request
-      .get(`https://dog.ceo/api/breed/${availableDogs[0]}/images/random`)
+      .get(
+        `https://dog.ceo/api/breed/${
+          availableDogs[threeRandomIndices[0]]
+        }/images/random`
+      )
       .then(response =>
         dispatch(
           sendRandomDogsWithPhoto(
