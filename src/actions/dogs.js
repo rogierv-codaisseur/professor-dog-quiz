@@ -32,14 +32,15 @@ function pickRandomDogs(dogs) {
   return [randomDog, randomDogName, otherRandomDogName];
 }
 
-export function getRandomDogsAndPhoto(allDogs) {
-  const threeRandomDogs = pickRandomDogs(Object.keys(allDogs));
+export function getRandomDogsAndPhoto(availableDogs) {
+  const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
+  console.log('three random dogs', threeRandomIndices)
   return function(dispatch) {
     request
-      .get(`https://dog.ceo/api/breed/${threeRandomDogs[0]}/images/random`)
+      .get(`https://dog.ceo/api/breed/${availableDogs[0]}/images/random`)
       .then(response =>
         dispatch(
-          sendRandomDogsWithPhoto(threeRandomDogs, response.body.message)
+          sendRandomDogsWithPhoto([availableDogs[threeRandomIndices[0]], availableDogs[threeRandomIndices[1]], availableDogs[threeRandomIndices[2]]], response.body.message)
         )
       );
   };
@@ -54,5 +55,12 @@ export function sendRandomDogsWithPhoto(randomDogs, url) {
       badDog2: randomDogs[2],
       imageUrl: url
     }
+  };
+}
+
+export function sendAvailableDogs(availableDogs) {
+  return {
+    type: "INCREASE_DOGS",
+    payload: availableDogs
   };
 }
