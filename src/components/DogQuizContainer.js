@@ -34,6 +34,7 @@ class DogQuizContainer extends Component {
     }
     if (
       this.props.image === prevProps.image &&
+      this.props.currentStreak === prevProps.currentStreak &&
       (this.props.turn === 0 || this.props.turn !== prevProps.turn)
     ) {
       this.props.getRandomDogsAndPhoto({
