@@ -8,6 +8,8 @@ import { addStreak, resetStreak } from '../actions/currentStreak';
 import { addHighestStreak } from '../actions/highestStreak';
 import { addCorrect, addWrong } from '../actions/successRate';
 import './StatsContainer.css';
+import { Progress } from 'react-sweet-progress';
+import 'react-sweet-progress/lib/style.css';
 
 class StatsContainer extends Component {
   onClickHandlerCorrect = () => {
