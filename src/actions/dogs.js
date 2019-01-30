@@ -34,13 +34,20 @@ function pickRandomDogs(dogs) {
 
 export function getRandomDogsAndPhoto(availableDogs) {
   const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
-  console.log('three random dogs', threeRandomIndices)
+  console.log("three random dogs", threeRandomIndices);
   return function(dispatch) {
     request
       .get(`https://dog.ceo/api/breed/${availableDogs[0]}/images/random`)
       .then(response =>
         dispatch(
-          sendRandomDogsWithPhoto([availableDogs[threeRandomIndices[0]], availableDogs[threeRandomIndices[1]], availableDogs[threeRandomIndices[2]]], response.body.message)
+          sendRandomDogsWithPhoto(
+            [
+              availableDogs[threeRandomIndices[0]],
+              availableDogs[threeRandomIndices[1]],
+              availableDogs[threeRandomIndices[2]]
+            ],
+            response.body.message
+          )
         )
       );
   };
@@ -62,5 +69,12 @@ export function sendAvailableDogs(availableDogs) {
   return {
     type: "INCREASE_DOGS",
     payload: availableDogs
+  };
+}
+
+export function increaseLevel() {
+  return {
+    type: "INCREASE_LEVEL",
+    payload: {}
   };
 }
