@@ -31,8 +31,14 @@ class DogQuizContainer extends Component {
       );
       this.props.increaseLevel();
     }
+    if (this.props.level !== prevProps.level) {
+      this.props.getRandomDogsAndPhoto({
+        ...this.props.availableDogs.available
+      });
+    }
     if (
       this.props.level === prevProps.level &&
+      this.props.availableDogs !== prevProps.availableDogs &&
       (this.props.image === prevProps.image &&
         this.props.currentStreak === prevProps.currentStreak &&
         (this.props.turn === 0 || this.props.turn !== prevProps.turn))
