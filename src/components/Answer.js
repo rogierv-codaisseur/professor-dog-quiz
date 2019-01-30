@@ -7,34 +7,53 @@ import { addCorrect, addWrong } from '../actions/successRate';
 
 class Answer extends Component {
   state = {
-    className: this.props.className
+    classNameAnswer: this.props.className,
+    classNameSolution: 'hide-answer'
+  };
+
+  correctAnswered = () => {
+    return this.props.answer === this.props.correctAnswer;
   };
 
   onClickCheckAnswer = () => {
-    this.setState({ className: this.props.classNameSolution });
+    // Show green or red:
+    this.setState({ classNameAnswer: this.props.classNameAnswer });
+
+    // If the user selects the wrong answer, show the correct answer
+    if (!this.correctAnswered()) {
+      this.setState({ classNameSolution: 'show-answer' });
+    }
+
+    // After 2 seconds, go to the next question.
     setTimeout(() => {
-      if (this.props.answer === this.props.correctAnswer) {
+      this.setState({ classNameSolution: 'hide-answer' });
+      if (this.correctAnswered()) {
         this.props.addStreak();
         this.props.addCorrect();
-        this.setState({ className: this.props.className });
+        this.setState({ classNameAnswer: this.props.className });
       } else {
         if (this.props.currentStreak >= this.props.highestStreak) {
           this.props.addHighestStreak(this.props.currentStreak);
         }
         this.props.addWrong();
         this.props.resetStreak();
-        this.setState({ className: this.props.className });
+        this.setState({ classNameAnswer: this.props.className });
       }
-    }, 1000);
+    }, 2000);
   };
 
   render() {
     return (
-      <button
-        className={this.state.className}
-        onClick={this.onClickCheckAnswer}>
-        {this.props.answer}
-      </button>
+      <div>
+        <button
+          className={this.state.classNameAnswer}
+          onClick={this.onClickCheckAnswer}>
+          {this.props.answer}
+        </button>
+        <div className={this.state.classNameSolution}>
+          Correct answer: {this.props.correctAnswer}
+        </div>
+      </div>
     );
   }
 }
