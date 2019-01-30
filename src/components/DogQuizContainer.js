@@ -28,10 +28,8 @@ class DogQuizContainer extends Component {
         this.props.availableDogs.unused,
         3
       );
-    }
-    if (this.props.image === prevProps.image) {
-      console.log("dogs", this.props.dogs);
-      console.log("available dogs", this.props.availableDogs.available);
+	}
+    if (this.props.image === prevProps.image && (this.props.turn === 0 || this.props.turn !== prevProps.turn)) {
       this.props.getRandomDogsAndPhoto({... this.props.availableDogs.available});
     }
   };
