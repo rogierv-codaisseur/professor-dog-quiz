@@ -7,6 +7,12 @@ export default function AnswerContainer(props) {
   const mixedArray = mixArray([props.name, props.badDog1, props.badDog2]);
 
   return (
+    //   <div className='answer-container'>
+    //   <button className='answer'>{mixedArray[0]}</button>
+    //   <button className='answer'>{mixedArray[1]}</button>
+    //   <button className='answer'>{mixedArray[2]}</button>
+    // </div>
+
     <div className='answer-container'>
       <Answer
         className='answer'
