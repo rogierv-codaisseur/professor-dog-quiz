@@ -10,7 +10,6 @@ import { addCorrect, addWrong } from "../actions/successRate";
 import "./StatsContainer.css";
 import StatsLevel from "./StatsLevel";
 
-
 class StatsContainer extends Component {
   onClickHandlerCorrect = () => {
     this.props.addStreak();
@@ -31,8 +30,8 @@ class StatsContainer extends Component {
         <StatsTurn successRate={this.props.successRate} />
         <StatsStreak currentStreak={this.props.currentStreak} />
         <StatsStreakHighest highestStreak={this.props.highestStreak} />
-        <StatsPercentage successRate={this.props.successRate} />
         <StatsLevel level={this.props.level} />
+        <StatsPercentage successRate={this.props.successRate} />
       </div>
     );
   }
