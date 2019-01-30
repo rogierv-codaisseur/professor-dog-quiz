@@ -22,7 +22,7 @@ class DogQuizContainer extends Component {
     if (
       this.props.turn !== prevProps.turn &&
       this.props.currentStreak > 0 &&
-      this.props.currentStreak % 10 === 0
+      this.props.currentStreak % 2 === 0
     ) {
       this.increaseAvailable(
         this.props.availableDogs.available,
@@ -30,12 +30,12 @@ class DogQuizContainer extends Component {
         3
       );
       this.props.increaseLevel();
-      console.log("git is being annoying");
     }
     if (
-      this.props.image === prevProps.image &&
-      this.props.currentStreak === prevProps.currentStreak &&
-      (this.props.turn === 0 || this.props.turn !== prevProps.turn)
+      this.props.level === prevProps.level &&
+      (this.props.image === prevProps.image &&
+        this.props.currentStreak === prevProps.currentStreak &&
+        (this.props.turn === 0 || this.props.turn !== prevProps.turn))
     ) {
       this.props.getRandomDogsAndPhoto({
         ...this.props.availableDogs.available
@@ -52,7 +52,6 @@ class DogQuizContainer extends Component {
     } else {
       const index = Math.floor(Math.random() * unused.length);
       const element = unused[index];
-      console.log(element);
       const availableCopy = [...available];
       const unusedCopy = [...unused];
       availableCopy.push(element);
