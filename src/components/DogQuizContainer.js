@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import DogQuiz from "./DogQuiz.js";
+import React, { Component } from 'react';
+import DogQuiz from './DogQuiz.js';
 import {
   getDogs,
   getRandomDogsAndPhoto,
   sendAvailableDogs,
   increaseLevel
-} from "../actions/dogs";
-import { connect } from "react-redux";
+} from '../actions/dogs';
+import { connect } from 'react-redux';
 
 class DogQuizContainer extends Component {
   state = { loading: true };
@@ -67,8 +67,14 @@ class DogQuizContainer extends Component {
   }
 
   render() {
-    if (!this.props.image) return "Loading photos...";
-    return <DogQuiz image={this.props.image} dogs={this.props.dogs} />;
+    if (!this.props.image) return 'Loading photos...';
+    return (
+      <DogQuiz
+        image={this.props.image}
+        dogs={this.props.dogs}
+        hardmode={this.props.hardmode}
+      />
+    );
   }
 }
 
@@ -78,7 +84,8 @@ const mapStateToProps = state => ({
   turn: state.successRate.CORRECT + state.successRate.WRONG,
   currentStreak: state.currentStreak,
   availableDogs: state.availableDogs,
-  level: state.level
+  level: state.level,
+  hardmode: state.hardmode
 });
 
 export default connect(
