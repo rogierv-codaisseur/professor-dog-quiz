@@ -14,7 +14,7 @@ export default function AnswerContainer(props) {
           className='answer'
           correctAnswer={props.name}
           answer={mixedArray[choice]}
-          classNameSolution={
+          classNameAnswer={
             props.name === mixedArray[choice]
               ? 'answer-correct'
               : 'answer-wrong'
