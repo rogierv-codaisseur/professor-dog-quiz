@@ -14,6 +14,7 @@ export default function(props) {
       <img
         className='dog-question-image'
         src={props.image.imageUrl}
+        id={props.hardmode && 'hard-mode'}
         alt='DogBreed'
       />
 
