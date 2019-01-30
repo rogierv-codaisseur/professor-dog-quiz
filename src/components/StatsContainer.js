@@ -10,6 +10,7 @@ import { addCorrect, addWrong } from "../actions/successRate";
 import "./StatsContainer.css";
 import StatsLevel from "./StatsLevel";
 
+
 class StatsContainer extends Component {
   onClickHandlerCorrect = () => {
     this.props.addStreak();
