@@ -22,7 +22,7 @@ export default function AnswerContainer(props) {
         {mixedArray.map((choice, index) => (
           <Answer
             questionType={props.questionType}
-            key={choice}
+            key={index}
             className="answer"
             correctAnswer={props.name}
             answer={dogs[choice]}
@@ -41,7 +41,7 @@ export default function AnswerContainer(props) {
         {mixedArray.map((choice, index) => (
           <Answer
             questionType={props.questionType}
-            key={choice}
+            key={index}
             images={images}
             className="answer-picture"
             correctAnswer={props.name}
