@@ -11,8 +11,17 @@ import { connect } from "react-redux";
 class DogQuizContainer extends Component {
   state = { loading: true };
 
+  pickQuestionType() {
+    const number = Math.floor(Math.random() * 3);
+    number === 0
+      ? this.setState({ questionType: "pick image" })
+      : this.setState({ questionType: "pick name" });
+  }
+
   componentDidMount = () => {
     this.props.getDogs();
+
+    this.pickQuestionType();
   };
 
   componentDidUpdate = prevProps => {
@@ -39,6 +48,9 @@ class DogQuizContainer extends Component {
         ...this.props.availableDogs.available
       });
     }
+    if (this.props.turn !== prevProps.turn) {
+      this.pickQuestionType();
+    }
   };
 
   increaseAvailable(available, unused, n) {
@@ -62,6 +74,7 @@ class DogQuizContainer extends Component {
     if (!this.props.image) return "Loading photos...";
     return (
       <DogQuiz
+        questionType={this.state.questionType}
         image={this.props.image}
         dogs={this.props.dogs}
         hardmode={this.props.hardmode}

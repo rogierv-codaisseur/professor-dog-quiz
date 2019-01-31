@@ -27,7 +27,7 @@ class Answer extends Component {
 		}, 2000);
 	};
 
-	componentDidUpdate = (prevProps, prevState) => {
+componentDidUpdate = (prevProps, prevState) => {
 		if (this.props.successRate !== prevProps.successRate) {
 			this.setState({
 				buttonId: '',
@@ -42,7 +42,7 @@ class Answer extends Component {
 		}, 2000);
 	};
 
-	correctAnswered = () => {
+correctAnswered = () => {
 		return this.props.answer === this.props.correctAnswer;
 	};
 
@@ -50,8 +50,8 @@ class Answer extends Component {
 		// Show green or red:
 		this.setState({ classNameAnswer: this.props.classNameAnswer });
 
-
-		// If the user selects the wrong answer, show the correct answer for 2 seconds.
+    
+    // If the user selects the wrong answer, show the correct answer for 2 seconds.
 		if (!this.correctAnswered()) {
 			this.setState({ classNameSolution: 'show-answer' });
 			setTimeout(() => {
@@ -65,31 +65,36 @@ class Answer extends Component {
 			}, 2000);
 		}
 
-		// If the user selects the correct answer, wait for 0.5 second.
-		if (this.correctAnswered()) {
-			setTimeout(() => {
-				this.setState({ classNameSolution: 'hide-answer' });
-				this.setState({ classNameAnswer: this.props.className });
-				this.props.addStreak();
-				this.props.addCorrect();
-			}, 500);
-		}
-	};
+    // If the user selects the correct answer, wait for 0.5 second.
+    if (this.correctAnswered()) {
+      setTimeout(() => {
+        this.setState({ classNameSolution: "hide-answer" });
+        this.setState({ classNameAnswer: this.props.className });
+        this.props.addStreak();
+        this.props.addCorrect();
+      }, 500);
+    }
+  };
 
-	render() {
-		return (
-			<div>
+
+
+  render() {
+    if (this.props.questionType === "pick name") {
+      return (
+        <div>
+          
 				<button
 					className={this.state.classNameAnswer}
 					onClick={this.onClickCheckAnswer}
           title={'Shortkey: ' + this.props.shortKey}
 					id={this.state.buttonId}
 				>
-					{this.props.answer}
-				</button>
-				<div className={this.state.classNameSolution}>Correct answer: {this.props.correctAnswer}</div>
-      
-              <React.Fragment>
+            {this.props.answer}
+          </button>
+          <div className={this.state.classNameSolution}>
+            Correct answer: {this.props.correctAnswer}
+          </div>
+                      <React.Fragment>
           {this.props.shortKey === this.state.keyOne && (
             <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
           )}
@@ -100,9 +105,42 @@ class Answer extends Component {
             <KeyHandler keyValue='3' onKeyHandle={this.onClickCheckAnswer} />
           )}
         </React.Fragment>
-			</div>
-		);
-	}
+        </div>
+        
+      );
+    }
+    if (this.props.questionType === "pick image") {
+      return (
+        <div>
+          <input
+        className={this.state.classNameAnswer}
+					onClick={this.onClickCheckAnswer}
+          title={'Shortkey: ' + this.props.shortKey}
+					id={this.state.buttonId}
+            type="image"
+            src={this.props.image}
+            className={this.state.classNameAnswer}
+          />
+          <div className={this.state.classNameSolution}>
+            Correct answer: {this.props.correctAnswer}
+          </div>
+                      <React.Fragment>
+          {this.props.shortKey === this.state.keyOne && (
+            <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
+          )}
+          {this.props.shortKey === this.state.keyTwo && (
+            <KeyHandler keyValue='2' onKeyHandle={this.onClickCheckAnswer} />
+          )}
+          {this.props.shortKey === this.state.keyThree && (
+            <KeyHandler keyValue='3' onKeyHandle={this.onClickCheckAnswer} />
+          )}
+        </React.Fragment>
+        
+        </div>
+      );
+    }
+  }
+
 }
 
 const mapStateToProps = state => ({

@@ -32,7 +32,7 @@ function pickRandomDogs(dogs) {
   return [randomDog, randomDogName, otherRandomDogName];
 }
 
-export function getRandomDogsAndPhoto(availableDogs) {
+/* export function getRandomDogsAndPhoto(availableDogs) {
   const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
   return function(dispatch) {
     request
@@ -54,16 +54,55 @@ export function getRandomDogsAndPhoto(availableDogs) {
         )
       );
   };
+} */
+
+export function getRandomDogsAndPhoto(availableDogs) {
+  const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
+  return function(dispatch) {
+    const goodDogPhoto = request.get(
+      `https://dog.ceo/api/breed/${
+        availableDogs[threeRandomIndices[0]]
+      }/images/random`
+    );
+    const badDog1Photo = request.get(
+      `https://dog.ceo/api/breed/${
+        availableDogs[threeRandomIndices[1]]
+      }/images/random`
+    );
+    const badDog2Photo = request.get(
+      `https://dog.ceo/api/breed/${
+        availableDogs[threeRandomIndices[2]]
+      }/images/random`
+    );
+    Promise.all([goodDogPhoto, badDog1Photo, badDog2Photo]).then(responses =>
+      dispatch(
+        sendRandomDogsWithPhoto(
+          [
+            availableDogs[threeRandomIndices[0]],
+            availableDogs[threeRandomIndices[1]],
+            availableDogs[threeRandomIndices[2]]
+          ],
+          [
+            responses[0].body.message,
+            responses[1].body.message,
+            responses[2].body.message
+          ]
+        )
+      )
+    );
+  };
 }
 
-export function sendRandomDogsWithPhoto(randomDogs, url) {
+export function sendRandomDogsWithPhoto(randomDogs, urls) {
   return {
     type: "SHOW_PHOTO",
     payload: {
       goodDog: randomDogs[0],
       badDog1: randomDogs[1],
       badDog2: randomDogs[2],
-      imageUrl: url
+      goodDogUrl: urls[0],
+      badDog1Url: urls[1],
+      badDog2Url: urls[2]
     }
   };
 }
