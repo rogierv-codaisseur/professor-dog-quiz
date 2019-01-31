@@ -1,6 +1,8 @@
+
 import React from "react";
 import Answer from "./Answer";
 import "./Answer.css";
+
 
 export default function AnswerContainer(props) {
   const dogs = [props.name, props.badDog1, props.badDog2];
@@ -12,6 +14,7 @@ export default function AnswerContainer(props) {
   const questionType = props.questionType;
   const shortKeys = "123";
   const mixedArray = props.mixedArray;
+
 
   if (questionType === "pick name") {
     return (
@@ -49,6 +52,7 @@ export default function AnswerContainer(props) {
               props.name === dogs[choice]
                 ? 'answer-correct-picture'
                 : 'answer-wrong-picture'
+
 
       
             }
