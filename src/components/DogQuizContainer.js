@@ -22,7 +22,7 @@ class DogQuizContainer extends Component {
     if (
       this.props.turn !== prevProps.turn &&
       this.props.currentStreak > 0 &&
-      this.props.currentStreak % 1 === 0
+      this.props.currentStreak % 10 === 0
     ) {
       this.increaseAvailable(
         this.props.availableDogs.available,
@@ -32,23 +32,8 @@ class DogQuizContainer extends Component {
       this.props.increaseLevel();
     }
     if (
-      this.props.availableDogs !== prevProps.availableDogs &&
-      this.props.level === prevProps.level &&
-      this.props.image === prevProps.image &&
-      this.props.currentStreak === prevProps.currentStreak &&
-      this.props.turn === prevProps.turn
-    ) {
-      console.log(1);
-      this.props.getRandomDogsAndPhoto({
-        ...this.props.availableDogs.available
-      });
-    }
-    if (
-      this.props.availableDogs === prevProps.availableDogs &&
-      this.props.level === prevProps.level &&
-      this.props.image === prevProps.image &&
-      this.props.currentStreak === prevProps.currentStreak &&
-      (this.props.turn === 0 || this.props.turn !== prevProps.turn)
+      this.props.turn !== prevProps.turn ||
+      this.props.availableDogs !== prevProps.availableDogs
     ) {
       console.log(2);
       this.props.getRandomDogsAndPhoto({
