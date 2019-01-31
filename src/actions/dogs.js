@@ -1,9 +1,9 @@
-import * as request from "superagent";
+import * as request from 'superagent';
 
 export function getDogs() {
   return function(dispatch) {
     request
-      .get("https://dog.ceo/api/breeds/list/all")
+      .get('https://dog.ceo/api/breeds/list/all')
       .then(response => response.body.message)
       .then(dogs => {
         dispatch(showDogsList(dogs));
@@ -11,7 +11,7 @@ export function getDogs() {
   };
 }
 
-const SHOW_DOGS = "SHOW_DOGS";
+const SHOW_DOGS = 'SHOW_DOGS';
 
 export function showDogsList(dogs) {
   return {
@@ -95,7 +95,7 @@ export function getRandomDogsAndPhoto(availableDogs) {
 
 export function sendRandomDogsWithPhoto(randomDogs, urls) {
   return {
-    type: "SHOW_PHOTO",
+    type: 'SHOW_PHOTO',
     payload: {
       goodDog: randomDogs[0],
       badDog1: randomDogs[1],
@@ -109,14 +109,14 @@ export function sendRandomDogsWithPhoto(randomDogs, urls) {
 
 export function sendAvailableDogs(availableDogs) {
   return {
-    type: "INCREASE_DOGS",
+    type: 'INCREASE_DOGS',
     payload: availableDogs
   };
 }
 
 export function increaseLevel() {
   return {
-    type: "INCREASE_LEVEL",
+    type: 'INCREASE_LEVEL',
     payload: {}
   };
 }
