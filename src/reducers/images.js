@@ -1,4 +1,4 @@
-const initialState = '';
+const initialState = 'affenpinscher';
 
 const reducer = (state = initialState, action = {}) => {
 	switch (action.type) {

@@ -1,6 +1,8 @@
+
 import React from 'react';
 import Answer from './Answer';
 import './Answer.css';
+
 
 export default function AnswerContainer(props) {
   const dogs = [props.name, props.badDog1, props.badDog2];
@@ -14,6 +16,7 @@ export default function AnswerContainer(props) {
   const mixedArray = props.mixedArray;
 
   if (questionType === 'pick name') {
+
     return (
       <div className='answer-container'>
         {mixedArray.map((choice, index) => (
