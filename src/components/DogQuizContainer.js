@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import DogQuiz from './DogQuiz.js';
+import React, { Component } from "react";
+import DogQuiz from "./DogQuiz.js";
 import {
   getDogs,
   getRandomDogsAndPhoto,
   sendAvailableDogs,
   increaseLevel
-} from '../actions/dogs';
-import { connect } from 'react-redux';
+} from "../actions/dogs";
+import { connect } from "react-redux";
 
 class DogQuizContainer extends Component {
   state = { loading: true };
@@ -14,14 +14,26 @@ class DogQuizContainer extends Component {
   pickQuestionType() {
     const number = Math.floor(Math.random() * 3);
     number === 0
-      ? this.setState({ questionType: 'pick image' })
-      : this.setState({ questionType: 'pick name' });
+      ? this.setState({ questionType: "pick image" })
+      : this.setState({ questionType: "pick name" });
   }
+
+  mixArray = array => {
+    if (array.length === 1) {
+      return array;
+    } else {
+      const index = Math.floor(Math.random() * array.length);
+      const newArray = [...array];
+      newArray.splice(index, 1);
+      return [array[index], ...this.mixArray(newArray)];
+    }
+  };
 
   componentDidMount = () => {
     this.props.getDogs();
 
     this.pickQuestionType();
+    this.setState({ mixedArray: this.mixArray([0, 1, 2]) });
   };
 
   componentDidUpdate = prevProps => {
@@ -50,6 +62,8 @@ class DogQuizContainer extends Component {
     }
     if (this.props.turn !== prevProps.turn) {
       this.pickQuestionType();
+      const mixedArray = this.mixArray([0, 1, 2]);
+      this.setState({ mixedArray: mixedArray });
     }
   };
 
@@ -71,9 +85,10 @@ class DogQuizContainer extends Component {
   }
 
   render() {
-    if (!this.props.image) return 'Loading photos...';
+    if (!this.props.image) return "Loading photos...";
     return (
       <DogQuiz
+        mixedArray={this.state.mixedArray}
         questionType={this.state.questionType}
         image={this.props.image}
         dogs={this.props.dogs}
