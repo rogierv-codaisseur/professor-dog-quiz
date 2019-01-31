@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import './Answer.css';
-import { addStreak, resetStreak } from '../actions/currentStreak';
-import { addHighestStreak } from '../actions/highestStreak';
-import { addCorrect, addWrong } from '../actions/successRate';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./Answer.css";
+import { addStreak, resetStreak } from "../actions/currentStreak";
+import { addHighestStreak } from "../actions/highestStreak";
+import { addCorrect, addWrong } from "../actions/successRate";
 
 class Answer extends Component {
   state = {
     classNameAnswer: this.props.className,
-    classNameSolution: 'hide-answer'
+    classNameSolution: "hide-answer"
   };
 
   correctAnswered = () => {
@@ -21,12 +21,12 @@ class Answer extends Component {
 
     // If the user selects the wrong answer, show the correct answer
     if (!this.correctAnswered()) {
-      this.setState({ classNameSolution: 'show-answer' });
+      this.setState({ classNameSolution: "show-answer" });
     }
 
     // After 2 seconds, go to the next question.
     setTimeout(() => {
-      this.setState({ classNameSolution: 'hide-answer' });
+      this.setState({ classNameSolution: "hide-answer" });
       if (this.correctAnswered()) {
         this.props.addStreak();
         this.props.addCorrect();
@@ -47,7 +47,8 @@ class Answer extends Component {
       <div>
         <button
           className={this.state.classNameAnswer}
-          onClick={this.onClickCheckAnswer}>
+          onClick={this.onClickCheckAnswer}
+        >
           {this.props.answer}
         </button>
         <div className={this.state.classNameSolution}>

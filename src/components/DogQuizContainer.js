@@ -20,9 +20,9 @@ class DogQuizContainer extends Component {
       this.increaseAvailable([], Object.keys(this.props.dogs), 3);
     }
     if (
-      this.props.turn !== prevProps.turn &&
-      this.props.currentStreak > 0 &&
-      this.props.currentStreak % 2 === 0
+      this.props.currentStreak > prevProps.currentStreak &&
+      this.props.currentStreak % 2 === 0 &&
+      this.props.currentStreak > 0
     ) {
       this.increaseAvailable(
         this.props.availableDogs.available,
