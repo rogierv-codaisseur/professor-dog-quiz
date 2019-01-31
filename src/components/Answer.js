@@ -19,27 +19,26 @@ class Answer extends Component {
     // Show green or red:
     this.setState({ classNameAnswer: this.props.classNameAnswer });
 
-    // If the user selects the wrong answer, show the correct answer
+    // If the user selects the wrong answer, show the correct answer for 2 seconds.
     if (!this.correctAnswered()) {
-      this.setState({ classNameSolution: "show-answer" });
-    }
-
-    // After 2 seconds, go to the next question.
-    setTimeout(() => {
-      this.setState({ classNameSolution: "hide-answer" });
-      if (this.correctAnswered()) {
-        this.props.addStreak();
-        this.props.addCorrect();
         this.setState({ classNameAnswer: this.props.className });
-      } else {
         if (this.props.currentStreak >= this.props.highestStreak) {
           this.props.addHighestStreak(this.props.currentStreak);
         }
         this.props.addWrong();
         this.props.resetStreak();
+      }, 2000);
+    }
+
+    // If the user selects the correct answer, wait for 0.5 second.
+    if (this.correctAnswered()) {
+      setTimeout(() => {
+        this.setState({ classNameSolution: 'hide-answer' });
         this.setState({ classNameAnswer: this.props.className });
-      }
-    }, 2000);
+        this.props.addStreak();
+        this.props.addCorrect();
+      }, 500);
+    }
   };
 
   render() {
