@@ -34,7 +34,11 @@ class StatsContainer extends Component {
       <div className='stats-container'>
         <label>
           Hard-mode:
-          <input type='checkbox' onClick={this.toggleHardMode} />
+          <input
+            type='checkbox'
+            onClick={this.toggleHardMode}
+            defaultChecked={this.props.hardmode}
+          />
         </label>
         <StatsTurn successRate={this.props.successRate} />
         <StatsStreak currentStreak={this.props.currentStreak} />
