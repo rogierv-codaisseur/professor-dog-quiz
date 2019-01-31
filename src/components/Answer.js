@@ -4,6 +4,7 @@ import './Answer.css';
 import { addStreak, resetStreak } from '../actions/currentStreak';
 import { addHighestStreak } from '../actions/highestStreak';
 import { addCorrect, addWrong } from '../actions/successRate';
+import KeyHandler from 'react-key-handler';
 
 class Answer extends Component {
   state = {
@@ -16,6 +17,7 @@ class Answer extends Component {
   };
 
   onClickCheckAnswer = () => {
+    // console.log(this.props.shortKey);
     // Show green or red:
     this.setState({ classNameAnswer: this.props.classNameAnswer });
 
@@ -49,12 +51,25 @@ class Answer extends Component {
       <div>
         <button
           className={this.state.classNameAnswer}
-          onClick={this.onClickCheckAnswer}>
+          onClick={this.onClickCheckAnswer}
+          title={'Shortkey: ' + this.props.shortKey}>
           {this.props.answer}
         </button>
         <div className={this.state.classNameSolution}>
           Correct answer: {this.props.correctAnswer}
         </div>
+
+        <React.Fragment>
+          {this.props.shortKey === '1' && (
+            <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
+          )}
+          {this.props.shortKey === '2' && (
+            <KeyHandler keyValue='2' onKeyHandle={this.onClickCheckAnswer} />
+          )}
+          {this.props.shortKey === '3' && (
+            <KeyHandler keyValue='3' onKeyHandle={this.onClickCheckAnswer} />
+          )}
+        </React.Fragment>
       </div>
     );
   }
