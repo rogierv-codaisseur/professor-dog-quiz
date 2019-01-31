@@ -19,9 +19,10 @@ export default function(props) {
           alt="DogBreed"
         />
       )}
-      {props.questionType === "pick image" && (
-        <h1 className="dog-question-breed" alt="DogBreed">
-          {props.image.goodDog}
+
+      {props.questionType === 'pick image' && (
+        <h1 className='dog-question-breed' alt='DogBreed'>
+          Select the picture of breed "{props.image.goodDog}"
         </h1>
       )}
 

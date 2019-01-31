@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Answer.css';
 import { addStreak, resetStreak } from '../actions/currentStreak';
 import { addHighestStreak } from '../actions/highestStreak';
 import { addCorrect, addWrong } from '../actions/successRate';
 import KeyHandler from 'react-key-handler';
+import './Answer.css';
 
 class Answer extends Component {
   state = {
@@ -60,7 +60,7 @@ class Answer extends Component {
         }
         this.props.addWrong();
         this.props.resetStreak();
-      }, 2000);
+      }, 1000);
     }
 
     // If the user selects the correct answer, wait for 0.5 second.
@@ -114,9 +114,7 @@ class Answer extends Component {
             src={this.props.image}
             alt={'maybe this one?'}
           />
-          <div className={this.state.classNameSolution}>
-            Correct answer: {this.props.correctAnswer}
-          </div>
+          <div className={this.state.classNameSolution}>WRONG!</div>
           <React.Fragment>
             {this.props.shortKey === this.state.keyOne && (
               <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
