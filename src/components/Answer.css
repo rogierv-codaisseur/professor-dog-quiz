@@ -42,6 +42,18 @@
   pointer-events: none;
 }
 
+.answer:focus {
+  outline: 0;
+}
+
+.answer-correct:focus {
+  outline: 0;
+}
+
+.answer-wrong:focus {
+  outline: 0;
+}
+
 .hide-answer {
   display: none
 }

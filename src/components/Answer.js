@@ -9,7 +9,10 @@ import KeyHandler from 'react-key-handler';
 class Answer extends Component {
   state = {
     classNameAnswer: this.props.className,
-    classNameSolution: 'hide-answer'
+    classNameSolution: 'hide-answer',
+    keyOne: '1',
+    keyTwo: '2',
+    keyThree: '3'
   };
 
   correctAnswered = () => {
@@ -17,7 +20,6 @@ class Answer extends Component {
   };
 
   onClickCheckAnswer = () => {
-    // console.log(this.props.shortKey);
     // Show green or red:
     this.setState({ classNameAnswer: this.props.classNameAnswer });
 
@@ -60,13 +62,13 @@ class Answer extends Component {
         </div>
 
         <React.Fragment>
-          {this.props.shortKey === '1' && (
+          {this.props.shortKey === this.state.keyOne && (
             <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
           )}
-          {this.props.shortKey === '2' && (
+          {this.props.shortKey === this.state.keyTwo && (
             <KeyHandler keyValue='2' onKeyHandle={this.onClickCheckAnswer} />
           )}
-          {this.props.shortKey === '3' && (
+          {this.props.shortKey === this.state.keyThree && (
             <KeyHandler keyValue='3' onKeyHandle={this.onClickCheckAnswer} />
           )}
         </React.Fragment>
