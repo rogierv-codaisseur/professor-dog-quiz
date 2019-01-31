@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import StatsPercentage from './StatsPercentage';
 import StatsStreak from './StatsStreak';
 import StatsStreakHighest from './StatsStreakHighest';
+
 import StatsTurn from './StatsTurn';
+
 import { addStreak, resetStreak } from '../actions/currentStreak';
 import { addHighestStreak } from '../actions/highestStreak';
 import { addCorrect, addWrong } from '../actions/successRate';
 import './StatsContainer.css';
+
 import { toggleHardMode } from '../actions/hardmode';
 import StatsLevel from './StatsLevel';
+
 
 class StatsContainer extends Component {
   onClickHandlerCorrect = () => {
@@ -32,6 +36,7 @@ class StatsContainer extends Component {
   render() {
     return (
       <div className='stats-container'>
+
         <label>
           Hard-mode:
           <input
@@ -45,6 +50,7 @@ class StatsContainer extends Component {
         <StatsStreakHighest highestStreak={this.props.highestStreak} />
         <StatsLevel level={this.props.level} />
         <StatsPercentage successRate={this.props.successRate} />
+
       </div>
     );
   }
@@ -53,9 +59,11 @@ class StatsContainer extends Component {
 const mapStateToProps = state => ({
   currentStreak: state.currentStreak,
   highestStreak: state.highestStreak,
+
   successRate: state.successRate,
   level: state.level,
   hardmode: state.hardmode
+
 });
 
 export default connect(

@@ -1,4 +1,6 @@
-# Group Project
+# PROFESSOR DOG QUIZ
+
+## Group Project
 
 Build a dog breed memorization game.
 
@@ -6,7 +8,7 @@ You'll be using a free public API called [Dog API](https://dog.ceo/dog-api/docum
 
 The webapp must be built using React and Redux.
 
-# Features
+## Features
 
 1. The webapp must show the user a random picture of a dog (the Dog API provides an endpoint for this purpose), and it must ask the user to choose the correct breed name from a list of 3 options.
 1. When a user makes the correct choice, they proceed to the next question.
@@ -17,7 +19,7 @@ The webapp must be built using React and Redux.
 1. If a user sees a breed for the first time, the game should give them an easy hint so they can learn the right answer.
 1. The game starts off with only 3 breeds and should gradually increase in difficulty. When the user has a streak of 10 correct answers, the game will add another 3 breeds into the mix, and so on.
 
-# How to get started
+## How to get started
 
 1. Draw some wireframes. That is, simple schematic designs that lay out all the parts of the webapp that need to be built.
 1. Specify the game logic:

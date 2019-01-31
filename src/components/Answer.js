@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import { addStreak, resetStreak } from '../actions/currentStreak';
 import { addHighestStreak } from '../actions/highestStreak';
@@ -147,3 +148,4 @@ export default connect(
   mapStateToProps,
   { addStreak, resetStreak, addHighestStreak, addCorrect, addWrong }
 )(Answer);
+
