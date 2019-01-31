@@ -13,9 +13,9 @@ export default function(props) {
       </div>
       {props.questionType === "pick name" && (
         <img
-          className="quiz-image"
+          className="dog-question-image"
           src={props.image.goodDogUrl}
-          id={props.hardmode && "hard-mode"}
+          id={props.hardmode ? "hard-mode" : "easy-mode"}
           alt="DogBreed"
         />
       )}
@@ -23,7 +23,7 @@ export default function(props) {
         <h1
           className="dog-question-image"
           src={props.image.goodDogUrl}
-          id={props.hardmode && "hard-mode"}
+          id={props.hardmode ? "hard-mode" : "easy-mode"}
           alt="DogBreed"
         >
           {props.image.goodDog}
