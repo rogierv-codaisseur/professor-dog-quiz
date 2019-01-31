@@ -45,7 +45,9 @@ export default function AnswerContainer(props) {
             image={images[choice]}
             answer={dogs[choice]}
             classNameAnswer={
-              props.name === dogs[choice] ? 'answer-correct' : 'answer-wrong'
+              props.name === dogs[choice]
+                ? 'answer-correct-picture'
+                : 'answer-wrong-picture'
             }
             shortKey={shortKeys[index]}
           />

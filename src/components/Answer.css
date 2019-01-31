@@ -64,6 +64,15 @@
   width: auto;
   height: 200px;
   margin: 1rem;
+  outline: 0;
+}
+
+.answer-correct-picture {
+  border: 10px solid green;
+}
+
+.answer-wrong-picture {
+  border: 10px solid black;
 }
 
 .hide-answer {
@@ -75,7 +84,7 @@
   font-size: 1.2rem;
 }
 
-#buttonId {
+/* #buttonId {
   animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -104,7 +113,7 @@
   60% {
     transform: translate3d(4px, 0, 0);
   }
-}
+} */
 
 @media screen and (max-width: 600px) {
   .answer {
