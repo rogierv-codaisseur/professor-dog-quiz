@@ -1,9 +1,7 @@
 .dog-quiz {
-  background: radial-gradient(
-    ellipse at center,
+  background: radial-gradient(ellipse at center,
     rgba(254, 252, 234, 1) 0%,
-    rgba(241, 218, 54, 1) 100%
-  );
+    rgba(241, 218, 54, 1) 100%);
   display: table;
   position: absolute;
   height: 100%;
@@ -41,6 +39,12 @@
   margin: 1rem;
   display: flex;
   justify-content: center;
+}
+
+.answers-pictures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {
