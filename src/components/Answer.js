@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { addStreak, resetStreak } from '../actions/currentStreak';
-import { addHighestStreak } from '../actions/highestStreak';
-import { addCorrect, addWrong } from '../actions/successRate';
-import KeyHandler from 'react-key-handler';
-import './Answer.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addStreak, resetStreak } from "../actions/currentStreak";
+import { addHighestStreak } from "../actions/highestStreak";
+import { addCorrect, addWrong } from "../actions/successRate";
+import KeyHandler from "react-key-handler";
+import "./Answer.css";
 
 class Answer extends Component {
   state = {
     classNameAnswer: this.props.className,
-    classNameSolution: 'hide-answer',
-    buttonId: '',
-    keyOne: '1',
-    keyTwo: '2',
-    keyThree: '3'
+    classNameSolution: "hide-answer",
+    buttonId: "",
+    keyOne: "1",
+    keyTwo: "2",
+    keyThree: "3"
   };
 
   componentDidMount = () => {
     const timer = setTimeout(() => {
-      if (this.props.answer !== '') {
+      if (this.props.answer !== "") {
         this.setState({
-          buttonId: 'buttonId'
+          buttonId: "buttonId"
         });
       }
     }, 2000);
@@ -33,13 +33,13 @@ class Answer extends Component {
   componentDidUpdate = (prevProps, prevState) => {
     if (this.props.successRate !== prevProps.successRate) {
       this.setState({
-        buttonId: ''
+        buttonId: ""
       });
     }
     setTimeout(() => {
       if (this.state.buttonId === prevState.buttonId) {
         this.setState({
-          buttonId: 'buttonId'
+          buttonId: "buttonId"
         });
       }
     }, 2000);
@@ -55,10 +55,10 @@ class Answer extends Component {
 
     // If the user selects the wrong answer, show the correct answer for 2 seconds.
     if (!this.correctAnswered()) {
-      this.setState({ classNameSolution: 'show-answer' });
+      this.setState({ classNameSolution: "show-answer" });
       setTimeout(() => {
-        this.setState({ classNameSolution: 'hide-answer' });
-        this.setState({ classNameAnswer: 'answer' });
+        this.setState({ classNameSolution: "hide-answer" });
+        this.setState({ classNameAnswer: "answer" });
         if (this.props.currentStreak >= this.props.highestStreak) {
           this.props.addHighestStreak(this.props.currentStreak);
         }
@@ -70,8 +70,8 @@ class Answer extends Component {
     // If the user selects the correct answer, wait for 0.5 second.
     if (this.correctAnswered()) {
       setTimeout(() => {
-        this.setState({ classNameSolution: 'hide-answer' });
-        this.setState({ classNameAnswer: 'answer' });
+        this.setState({ classNameSolution: "hide-answer" });
+        this.setState({ classNameAnswer: "answer" });
         this.props.addStreak();
         this.props.addCorrect();
       }, 500);
@@ -79,14 +79,15 @@ class Answer extends Component {
   };
 
   render() {
-    if (this.props.questionType === 'pick name') {
+    if (this.props.questionType === "pick name") {
       return (
         <div>
           <button
             className={this.state.classNameAnswer}
             onClick={this.onClickCheckAnswer}
-            title={'Shortkey: ' + this.props.shortKey}
-            id={this.state.buttonId}>
+            title={"Shortkey: " + this.props.shortKey}
+            id={this.state.buttonId}
+          >
             {this.props.answer}
           </button>
           <div className={this.state.classNameSolution}>
@@ -94,40 +95,40 @@ class Answer extends Component {
           </div>
           <React.Fragment>
             {this.props.shortKey === this.state.keyOne && (
-              <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
+              <KeyHandler keyValue="1" onKeyHandle={this.onClickCheckAnswer} />
             )}
             {this.props.shortKey === this.state.keyTwo && (
-              <KeyHandler keyValue='2' onKeyHandle={this.onClickCheckAnswer} />
+              <KeyHandler keyValue="2" onKeyHandle={this.onClickCheckAnswer} />
             )}
             {this.props.shortKey === this.state.keyThree && (
-              <KeyHandler keyValue='3' onKeyHandle={this.onClickCheckAnswer} />
+              <KeyHandler keyValue="3" onKeyHandle={this.onClickCheckAnswer} />
             )}
           </React.Fragment>
         </div>
       );
     }
-    if (this.props.questionType === 'pick image') {
+    if (this.props.questionType === "pick image") {
       return (
-        <div id={this.props.hardmode && 'hard-mode'}>
+        <div id={this.props.hardmode && "hard-mode"}>
           <input
-            className={'answer-picture'}
+            className={"answer-picture"}
             onClick={this.onClickCheckAnswer}
-            title={'Shortkey: ' + this.props.shortKey}
+            title={"Shortkey: " + this.props.shortKey}
             id={this.state.buttonId}
-            type='image'
+            type="image"
             src={this.props.image}
-            alt={'maybe this one?'}
+            alt={"maybe this one?"}
           />
           <div className={this.state.classNameSolution}>WRONG!</div>
           <React.Fragment>
             {this.props.shortKey === this.state.keyOne && (
-              <KeyHandler keyValue='1' onKeyHandle={this.onClickCheckAnswer} />
+              <KeyHandler keyValue="1" onKeyHandle={this.onClickCheckAnswer} />
             )}
             {this.props.shortKey === this.state.keyTwo && (
-              <KeyHandler keyValue='2' onKeyHandle={this.onClickCheckAnswer} />
+              <KeyHandler keyValue="2" onKeyHandle={this.onClickCheckAnswer} />
             )}
             {this.props.shortKey === this.state.keyThree && (
-              <KeyHandler keyValue='3' onKeyHandle={this.onClickCheckAnswer} />
+              <KeyHandler keyValue="3" onKeyHandle={this.onClickCheckAnswer} />
             )}
           </React.Fragment>
         </div>

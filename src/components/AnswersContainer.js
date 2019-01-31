@@ -1,8 +1,9 @@
-import React from 'react';
-import Answer from './Answer';
-import './Answer.css';
+import React from "react";
+import Answer from "./Answer";
+import "./Answer.css";
 
 export default function AnswerContainer(props) {
+  console.log(props.seenDogs, 1);
   const dogs = [props.name, props.badDog1, props.badDog2];
   const images = [
     props.image.goodDogUrl,
@@ -10,21 +11,23 @@ export default function AnswerContainer(props) {
     props.image.badDog2Url
   ];
   const questionType = props.questionType;
-  const shortKeys = '123';
-  const mixedArray = props.mixedArray;
 
-  if (questionType === 'pick name') {
+  const shortKeys = "123";
+  const mixedArray =
+    props.seenDogs.indexOf(dogs[0]) > -1 ? props.mixedArray : [0, 0, 0];
+
+  if (questionType === "pick name") {
     return (
-      <div className='answer-container'>
+      <div className="answer-container">
         {mixedArray.map((choice, index) => (
           <Answer
             questionType={props.questionType}
             key={choice}
-            className='answer'
+            className="answer"
             correctAnswer={props.name}
             answer={dogs[choice]}
             classNameAnswer={
-              props.name === dogs[choice] ? 'answer-correct' : 'answer-wrong'
+              props.name === dogs[choice] ? "answer-correct" : "answer-wrong"
             }
             shortKey={shortKeys[index]}
           />
@@ -32,22 +35,22 @@ export default function AnswerContainer(props) {
       </div>
     );
   }
-  if (questionType === 'pick image') {
+  if (questionType === "pick image") {
     return (
-      <div className='answer-container-breed'>
+      <div className="answer-container-breed">
         {mixedArray.map((choice, index) => (
           <Answer
             questionType={props.questionType}
             key={choice}
             images={images}
-            className='answer-picture'
+            className="answer-picture"
             correctAnswer={props.name}
             image={images[choice]}
             answer={dogs[choice]}
             classNameAnswer={
               props.name === dogs[choice]
-                ? 'answer-correct-picture'
-                : 'answer-wrong-picture'
+                ? "answer-correct-picture"
+                : "answer-wrong-picture"
             }
             shortKey={shortKeys[index]}
           />

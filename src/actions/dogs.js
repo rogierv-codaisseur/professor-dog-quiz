@@ -32,30 +32,6 @@ function pickRandomDogs(dogs) {
   return [randomDog, randomDogName, otherRandomDogName];
 }
 
-/* export function getRandomDogsAndPhoto(availableDogs) {
-  const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
-  return function(dispatch) {
-    request
-      .get(
-        `https://dog.ceo/api/breed/${
-          availableDogs[threeRandomIndices[0]]
-        }/images/random`
-      )
-      .then(response =>
-        dispatch(
-          sendRandomDogsWithPhoto(
-            [
-              availableDogs[threeRandomIndices[0]],
-              availableDogs[threeRandomIndices[1]],
-              availableDogs[threeRandomIndices[2]]
-            ],
-            response.body.message
-          )
-        )
-      );
-  };
-} */
-
 export function getRandomDogsAndPhoto(availableDogs) {
   const threeRandomIndices = pickRandomDogs(Object.keys(availableDogs));
   return function(dispatch) {
@@ -118,5 +94,12 @@ export function increaseLevel() {
   return {
     type: 'INCREASE_LEVEL',
     payload: {}
+  };
+}
+
+export function updateSeenDogs(dog) {
+  return {
+    type: "DOG_SEEN",
+    payload: dog
   };
 }

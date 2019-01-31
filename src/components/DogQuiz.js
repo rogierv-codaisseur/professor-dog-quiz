@@ -20,8 +20,8 @@ export default function(props) {
         />
       )}
 
-      {props.questionType === 'pick image' && (
-        <h1 className='dog-question-breed' alt='DogBreed'>
+      {props.questionType === "pick image" && (
+        <h1 className="dog-question-breed" alt="DogBreed">
           Select the picture of breed "{props.image.goodDog}"
         </h1>
       )}
@@ -29,6 +29,7 @@ export default function(props) {
       {props.questionType === "pick name" && (
         <div className="answers">
           <AnswersContainer
+            seenDogs={props.seenDogs}
             mixedArray={props.mixedArray}
             image={props.image}
             name={props.image.goodDog}
@@ -43,6 +44,7 @@ export default function(props) {
       {props.questionType === "pick image" && (
         <div className="answers-pictures">
           <AnswersContainer
+            seenDogs={props.seenDogs}
             mixedArray={props.mixedArray}
             image={props.image}
             name={props.image.goodDog}
