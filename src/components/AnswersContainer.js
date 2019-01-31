@@ -3,7 +3,6 @@ import Answer from "./Answer";
 import "./Answer.css";
 
 export default function AnswerContainer(props) {
-  console.log(props.seenDogs, 1);
   const dogs = [props.name, props.badDog1, props.badDog2];
   const images = [
     props.image.goodDogUrl,

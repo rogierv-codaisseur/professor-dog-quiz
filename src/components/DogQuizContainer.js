@@ -71,13 +71,10 @@ class DogQuizContainer extends Component {
       this.pickQuestionType();
       const mixedArray = this.mixArray([0, 1, 2]);
       this.setState({ mixedArray: mixedArray });
-      console.log(this.props.image);
-      console.log(this.props.seenDogs);
     }
     if (this.props.currentStreak > prevProps.currentStreak) {
       if (this.props.seenDogs.indexOf(this.props.image.goodDog) === -1) {
         this.props.updateSeenDogs(this.props.image.goodDog);
-        console.log(this.props.seenDogs);
       }
     }
   };
