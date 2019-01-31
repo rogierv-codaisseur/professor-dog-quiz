@@ -1,10 +1,10 @@
 import React from 'react';
 import Answer from './Answer';
 
-import './Answer.css';
-
 export default function AnswerContainer(props) {
   const mixedArray = mixArray([props.name, props.badDog1, props.badDog2]);
+
+  const shortKeys = '123';
 
   return (
     <div className='answer-container'>
@@ -19,6 +19,7 @@ export default function AnswerContainer(props) {
               ? 'answer-correct'
               : 'answer-wrong'
           }
+          shortKey={shortKeys[choice]}
         />
       ))}
     </div>
