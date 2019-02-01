@@ -8,12 +8,12 @@ import Footer from './Footer';
 export default function(props) {
   return (
     <div className='dog-quiz'>
-      <div className='dog-quiz-title'>
+      <a href='/' className='dog-quiz-title'>
         <img className='dog-quiz-logo' src={logo} alt='logo' />
         <h1>
           Professor <span className='green'>Dog</span> Quiz
         </h1>
-      </div>
+      </a>
       {props.questionType === 'pick name' && (
         <img
           className='dog-question-image'
