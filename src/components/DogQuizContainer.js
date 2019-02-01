@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import DogQuiz from "./DogQuiz.js";
+import React, { Component } from 'react';
+import DogQuiz from './DogQuiz.js';
 import {
   getDogs,
   getRandomDogsAndPhoto,
   sendAvailableDogs,
   increaseLevel,
   updateSeenDogs
-} from "../actions/dogs";
-import { connect } from "react-redux";
+} from '../actions/dogs';
+import { connect } from 'react-redux';
 
 class DogQuizContainer extends Component {
   _isMounted = false;
@@ -16,8 +16,8 @@ class DogQuizContainer extends Component {
   pickQuestionType() {
     const number = Math.floor(Math.random() * 3);
     number === 0
-      ? this.setState({ questionType: "pick image" })
-      : this.setState({ questionType: "pick name" });
+      ? this.setState({ questionType: 'pick image' })
+      : this.setState({ questionType: 'pick name' });
   }
 
   mixArray = array => {
@@ -97,7 +97,7 @@ class DogQuizContainer extends Component {
   }
 
   render() {
-    if (!this.props.image) return "Loading photos...";
+    if (!this.props.image) return 'Loading photos...';
     return (
       <DogQuiz
         seenDogs={this.props.seenDogs}
