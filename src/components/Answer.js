@@ -50,12 +50,12 @@ class Answer extends Component {
   };
 
   onClickCheckAnswer = () => {
+      this.green.play();
     // Show green or red:
     this.setState({ classNameAnswer: this.props.classNameAnswer });
 
     // If the user selects the wrong answer, show the correct answer for 2 seconds.
     if (!this.correctAnswered()) {
-        this.green.play();
       this.setState({ classNameSolution: "show-answer" });
       setTimeout(() => {
         this.setState({ classNameSolution: "hide-answer" });
@@ -66,13 +66,11 @@ class Answer extends Component {
         this.props.addWrong();
         this.props.resetStreak();
       }, 1000);
-        //this.green.play();
     }
 
 
     // If the user selects the correct answer, wait for 0.5 second.
     if (this.correctAnswered()) {
-        this.green.play();
       setTimeout(() => {
         this.setState({ classNameSolution: "hide-answer" });
         this.setState({ classNameAnswer: "answer" });
@@ -120,7 +118,14 @@ class Answer extends Component {
     }
     if (this.props.questionType === "pick image") {
       return (
-        <div id={this.props.hardmode && "hard-mode"}>
+        <div id={this.props.hardmode ? "hard-mode": "easy-mode"}>
+            <audio id={"sound"}
+                   src={"https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"}
+                   type={"audio/mpeg"}
+                   ref={(green) => { this.green = green; }}
+                   preload={"auto"}
+            >
+            </audio>
           <input
             className={"answer-picture"}
             onClick={this.onClickCheckAnswer}
