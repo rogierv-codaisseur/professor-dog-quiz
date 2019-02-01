@@ -55,6 +55,7 @@ class Answer extends Component {
 
     // If the user selects the wrong answer, show the correct answer for 2 seconds.
     if (!this.correctAnswered()) {
+        this.green.play();
       this.setState({ classNameSolution: "show-answer" });
       setTimeout(() => {
         this.setState({ classNameSolution: "hide-answer" });
@@ -65,10 +66,13 @@ class Answer extends Component {
         this.props.addWrong();
         this.props.resetStreak();
       }, 1000);
+        //this.green.play();
     }
+
 
     // If the user selects the correct answer, wait for 0.5 second.
     if (this.correctAnswered()) {
+        this.green.play();
       setTimeout(() => {
         this.setState({ classNameSolution: "hide-answer" });
         this.setState({ classNameAnswer: "answer" });
@@ -82,6 +86,13 @@ class Answer extends Component {
     if (this.props.questionType === "pick name") {
       return (
         <div>
+            <audio id={"sound"}
+                   src={"https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"}
+                   type={"audio/mpeg"}
+                   ref={(green) => { this.green = green; }}
+                   preload={"auto"}
+                    >
+            </audio>
           <button
             className={this.state.classNameAnswer}
             onClick={this.onClickCheckAnswer}
@@ -148,3 +159,5 @@ export default connect(
   mapStateToProps,
   { addStreak, resetStreak, addHighestStreak, addCorrect, addWrong }
 )(Answer);
+/**<source src={"https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"} type={"audio/mpeg"} >
+ </source>*/
