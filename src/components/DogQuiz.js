@@ -3,6 +3,7 @@ import AnswersContainer from './AnswersContainer';
 import StatsContainer from './StatsContainer';
 import './DogQuiz.css';
 import logo from './../images/dog-api-logo.svg';
+import Footer from './Footer';
 
 export default function(props) {
   return (
@@ -29,17 +30,20 @@ export default function(props) {
       )}
 
       {props.questionType === 'pick name' && (
-        <div className='answers'>
-          <AnswersContainer
-            seenDogs={props.seenDogs}
-            mixedArray={props.mixedArray}
-            image={props.image}
-            name={props.image.goodDog}
-            badDog1={props.image.badDog1}
-            badDog2={props.image.badDog2}
-            questionType={props.questionType}
-          />
-          <StatsContainer />
+        <div>
+          <div className='answers'>
+            <AnswersContainer
+              seenDogs={props.seenDogs}
+              mixedArray={props.mixedArray}
+              image={props.image}
+              name={props.image.goodDog}
+              badDog1={props.image.badDog1}
+              badDog2={props.image.badDog2}
+              questionType={props.questionType}
+            />
+            <StatsContainer />
+          </div>
+          <Footer />
         </div>
       )}
 
@@ -55,6 +59,7 @@ export default function(props) {
             questionType={props.questionType}
           />
           <StatsContainer />
+          <Footer />
         </div>
       )}
     </div>
