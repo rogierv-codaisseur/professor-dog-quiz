@@ -85,3 +85,7 @@
 .footer {
   color: darkslategray
 }
+
+a {
+  text-decoration: none
+}
