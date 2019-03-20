@@ -51,4 +51,3 @@ Development Team:<br />
 Emine Bahçe Çizer: https://github.com/eminebahce<br />
 Robert Hames Mann: https://github.com/MannRobertJ<br />
 Rogier Verkaik: https://github.com/rogierv
-Dusty Wood Saunders: https://github.com/dustywsaunders
